@@ -354,7 +354,7 @@ class Scope implements \JsonSerializable
             $transformedData = call_user_func($transformer, $data);
         } else {
             $transformer->setCurrentScope($this);
-            $transformedData = $transformer->transform($data);
+            $transformedData = is_null($data) ? [] : $transformer->transform($data);
         }
 
         if ($this->transformerHasIncludes($transformer)) {
